@@ -25,4 +25,5 @@ build/
 .vscode/
 .build/
 .pytest_cache/
-
+env/
+results/

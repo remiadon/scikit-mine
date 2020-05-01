@@ -153,3 +153,5 @@ def test_relative_support():
 
     for item in lcm.item_to_tids.keys():
         assert set(lcm.item_to_tids[item]) == true_item_to_tids[item]
+
+    assert round(lcm._min_supp) == 3
