@@ -102,7 +102,11 @@ class LCM(BaseMiner):
 
         return self
 
+    partial_fit = fit
+
     def get_binary_matrix(self):
+        """Construct a binary matrix from previously seen transactions
+        """
         valid_items = sorted((k for k, v in self.item_to_tids.items() if len(v) >= self._min_supp))
         shape = (self.n_transactions, len(valid_items))
         m = np.zeros(shape, dtype=np.bool)
@@ -112,11 +116,6 @@ class LCM(BaseMiner):
             tids = self.item_to_tids[item]
             m[tids, col_idx] = True
         return pd.DataFrame(m, columns=valid_items)
-
-    def get_tids(self, itemset):
-        from functools import reduce
-        tids = (self.item_to_tids[e] for e in itemset)
-        return reduce(RoaringBitmap.intersection, tids)
 
     def fit_transform(self, D):
         """fit LCM on the transactional database, and return the set of
@@ -146,12 +145,9 @@ class LCM(BaseMiner):
 
         # reverse order of support
         sorted_items = sorted(m.columns, key=lambda e: len(self.item_to_tids[e]), reverse=True)
-
-        dfs = [empty_df]
-        for item in sorted_items:
-            df = self._explore_item(item, m)
-            dfs.append(df)
-        dfs = [self._explore_item(item, m) for item in sorted_items]  # TODO : joblib.Parallel
+        dfs = Parallel(n_jobs=self.n_jobs, prefer='processes')(
+            delayed(self._explore_item)(item, m) for item in sorted_items
+        )
 
         dfs.append(empty_df) # make sure we have something to concat
         return pd.concat(dfs, axis=0, ignore_index=True)
@@ -165,9 +161,9 @@ class LCM(BaseMiner):
             print('LCM found {} new itemsets from item : {}'.format(len(df), item))
         return df
 
-    def _inner(self, p, tids, limit, matrix):
+    def _inner(self, p, tids, limit, DB):
         # project and reduce DB w.r.t P and limit
-        CDB = matrix.iloc[tids].drop(p - {limit}, axis=1, errors='ignore')
+        CDB = DB.iloc[tids]
         freqs = CDB.sum()
 
         split_crit = (freqs == len(tids))
@@ -177,10 +173,13 @@ class LCM(BaseMiner):
             p_prime = p | cp
             yield p_prime, len(tids)
 
-            candidates = freqs[~split_crit].index  # freq items no in cp
-            candidates = candidates[candidates < limit]
-            for new_limit in candidates:
-                ids = self.item_to_tids[new_limit]
-                if tids.intersection_len(ids) >= self._min_supp:
-                    new_tids = tids.intersection(ids)
-                    yield from self._inner(p_prime, new_tids, new_limit, matrix)
+            cands = freqs[~split_crit]
+            cands = cands.loc[:limit]
+            cands = cands[cands >= self._min_supp]
+
+            new_DB = None
+            for cand in cands.index:
+                if new_DB is None:
+                    new_DB = DB.drop(cp, axis=1, errors='ignore')
+                new_tids = tids.intersection(self.item_to_tids[cand])
+                yield from self._inner(p_prime, new_tids, cand, new_DB)

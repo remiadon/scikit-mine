@@ -4,9 +4,6 @@ import pytest
 from skmine.itemsets import LCM
 from functools import partial
 
-def next_(*args):
-    return next(*args, None) or (None, None)
-
 D = pd.Series([
     [1, 2, 3, 4, 5, 6],
     [2, 3, 5],
@@ -49,17 +46,17 @@ def test_first_parent_limit_1():
     lcm.fit(D)
 
     p = frozenset([4, 6])
-    tids = lcm.get_tids(p)
+    tids = lcm.item_to_tids[4] & lcm.item_to_tids[6]
 
     ## pattern = {4, 6} -> first parent fails
-    itemset, supp = next_(lcm._inner(p, tids, 1, matrix))
+    itemset, supp = next(lcm._inner(p, tids, 1, matrix), (None, None))
     assert itemset == None
     assert supp == None
 
     p = frozenset([1])
-    tids = lcm.get_tids(p)
+    tids = lcm.item_to_tids[1]
     # pattern = {1} -> first parent fails
-    itemset, supp = next_(lcm._inner(p, tids, 1, matrix))
+    itemset, supp = next(lcm._inner(p, tids, 1, matrix), (None, None))
     assert itemset == None
     assert supp == None
 
@@ -69,7 +66,7 @@ def test_first_parent_limit_2():
     lcm.fit(D)
 
     p = frozenset([2])
-    tids = lcm.get_tids(p)
+    tids = lcm.item_to_tids[2]
     # pattern = {} -> first parent OK
     tids = lcm.item_to_tids[2]
     itemset, supp = next(lcm._inner(p, tids, 2, matrix), (None, None))
@@ -82,7 +79,7 @@ def test_first_parent_limit_3():
     lcm.fit(D)
 
     p = frozenset([3])
-    tids = lcm.get_tids(p)
+    tids = lcm.item_to_tids[3]
     itemset, supp = next(lcm._inner(p, tids, 3, matrix), (None, None))
     assert itemset == frozenset([3])
     assert supp == 3
@@ -93,7 +90,7 @@ def test_first_parent_limit_4():
     lcm.fit(D)
 
     p = frozenset([4])
-    tids = lcm.get_tids(p)
+    tids = lcm.item_to_tids[4]
     itemset, supp = next(lcm._inner(p, tids, 4, matrix), (None, None))
     assert itemset == frozenset([4])
     assert supp == 5
@@ -104,7 +101,7 @@ def test_first_parent_limit_5():
     lcm.fit(D)
 
     p = frozenset([5])
-    tids = lcm.get_tids(p)
+    tids = lcm.item_to_tids[5]
     itemset, supp = next(lcm._inner(p, tids, 5, matrix), (None, None))
     assert itemset == frozenset([2, 5])
     assert supp == 4
@@ -115,13 +112,13 @@ def test_first_parent_limit_6():
     lcm.fit(D)
 
     p = frozenset([6])
-    tids = lcm.get_tids(p)
+    tids = lcm.item_to_tids[6]
     itemset, supp = next(lcm._inner(p, tids, 6, matrix), (None, None))
     assert itemset == frozenset([4, 6])
     assert supp == 4
 
     p = frozenset([1])
-    tids = lcm.get_tids(p)
+    tids = lcm.item_to_tids[1]
     itemset, supp = next(lcm._inner(p, tids, 6, matrix), (None, None))
     assert itemset == frozenset([1, 4, 6])
     assert supp == 3
