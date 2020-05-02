@@ -19,7 +19,8 @@
 *.pickle
 docs/_build/*
 docs/_static/
-docs/skmine.*.rst
+docs/skmine*.rst
+docs/modules*.rst
 build/
 *.egg*
 .vscode/
@@ -27,3 +28,4 @@ build/
 .pytest_cache/
 env/
 results/
+html/

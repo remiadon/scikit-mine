@@ -27,6 +27,7 @@ def _check_min_supp(min_supp):
         raise TypeError('Mimimum support must be of type int or float')
     return min_supp
 
+
 class LCM(BaseMiner):
     """
     Linear time Closed item set Miner.
@@ -101,6 +102,22 @@ class LCM(BaseMiner):
 
         return self
 
+    def get_binary_matrix(self):
+        valid_items = sorted((k for k, v in self.item_to_tids.items() if len(v) >= self._min_supp))
+        shape = (self.n_transactions, len(valid_items))
+        m = np.zeros(shape, dtype=np.bool)
+        # semi-vectorized initialisation
+        # in practice len(self._items) is not big so that's OK
+        for col_idx, item in enumerate(valid_items):
+            tids = self.item_to_tids[item]
+            m[tids, col_idx] = True
+        return pd.DataFrame(m, columns=valid_items)
+
+    def get_tids(self, itemset):
+        from functools import reduce
+        tids = (self.item_to_tids[e] for e in itemset)
+        return reduce(RoaringBitmap.intersection, tids)
+
     def fit_transform(self, D):
         """fit LCM on the transactional database, and return the set of
         closed itemsets in this database, with respect to the minium support
@@ -123,44 +140,47 @@ class LCM(BaseMiner):
 
         """
         self.fit(D)
+
+        m = self.get_binary_matrix()
         empty_df = pd.DataFrame(columns=['itemset', 'support'])
-        items = filter(lambda e: len(e[1]) >= self._min_supp, self.item_to_tids.items())
 
         # reverse order of support
-        sorted_items = sorted(items, key=lambda e: len(e[1]), reverse=True)
+        sorted_items = sorted(m.columns, key=lambda e: len(self.item_to_tids[e]), reverse=True)
 
-        dfs = Parallel(n_jobs=self.n_jobs, prefer='processes')(
-            delayed(self._explore_item)(item, tids) for item, tids in sorted_items
-        )
+        dfs = [empty_df]
+        for item in sorted_items:
+            df = self._explore_item(item, m)
+            dfs.append(df)
+        dfs = [self._explore_item(item, m) for item in sorted_items]  # TODO : joblib.Parallel
 
         dfs.append(empty_df) # make sure we have something to concat
         return pd.concat(dfs, axis=0, ignore_index=True)
 
-    def _explore_item(self, item, tids):
-        it = self._inner(frozenset(), tids, item)
+    def _explore_item(self, item, matrix):
+        tids = self.item_to_tids[item]
+        it = self._inner(frozenset([item]), tids, item, matrix)
         df = pd.DataFrame(data=it, columns=['itemset', 'support'])
         df.support = df.support.astype(np.uint32)
         if not df.empty:
             print('LCM found {} new itemsets from item : {}'.format(len(df), item))
         return df
 
-    def _inner(self, p, tids, limit):
-        # project and reduce DB w.r.t P
-        cp = (
-            item for item, ids in reversed(self.item_to_tids.items())
-            if tids.issubset(ids) if item not in p
-        )
+    def _inner(self, p, tids, limit, matrix):
+        # project and reduce DB w.r.t P and limit
+        CDB = matrix.iloc[tids].drop(p - {limit}, axis=1, errors='ignore')
+        freqs = CDB.sum()
 
-        max_k = next(cp, None)  # items are in reverse order, so the first consumed is the max
-
-        if max_k and max_k == limit:
-            p_prime = p | set(cp) | {max_k}  # max_k has been consumed when calling next()
+        split_crit = (freqs == len(tids))
+        cp = freqs[split_crit].index
+        if cp.max() == limit:
+            cp = frozenset(cp)
+            p_prime = p | cp
             yield p_prime, len(tids)
 
-            candidates = self.item_to_tids.keys() - p_prime
-            candidates = candidates[:candidates.bisect_left(limit)]
+            candidates = freqs[~split_crit].index  # freq items no in cp
+            candidates = candidates[candidates < limit]
             for new_limit in candidates:
                 ids = self.item_to_tids[new_limit]
                 if tids.intersection_len(ids) >= self._min_supp:
-                    new_limit_tids = tids.intersection(ids)
-                    yield from self._inner(p_prime, new_limit_tids, new_limit)
+                    new_tids = tids.intersection(ids)
+                    yield from self._inner(p_prime, new_tids, new_limit, matrix)

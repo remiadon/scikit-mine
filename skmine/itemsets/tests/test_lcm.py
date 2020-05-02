@@ -2,6 +2,10 @@ import pandas as pd
 import pytest
 
 from skmine.itemsets import LCM
+from functools import partial
+
+def next_(*args):
+    return next(*args, None) or (None, None)
 
 D = pd.Series([
     [1, 2, 3, 4, 5, 6],
@@ -22,6 +26,15 @@ true_item_to_tids = {
     6 : {0, 3, 5, 6},
 }
 
+matrix = LCM(min_supp=3).fit(D).get_binary_matrix()
+
+def test_binary_matrix():
+    lcm = LCM(min_supp=3)
+    lcm.fit(D)
+    m = lcm.get_binary_matrix()
+    assert m.columns.tolist() == list(range(1, 7))
+    assert m.sum().sum() == 24
+
 
 def test_lcm_fit():
     lcm = LCM(min_supp=3)
@@ -30,20 +43,23 @@ def test_lcm_fit():
     for item in lcm.item_to_tids.keys():
         assert set(lcm.item_to_tids[item]) == true_item_to_tids[item]
 
+
 def test_first_parent_limit_1():
     lcm = LCM(min_supp=3)
     lcm.fit(D)
 
-    limit = 1
-    tids = lcm.item_to_tids[limit]
+    p = frozenset([4, 6])
+    tids = lcm.get_tids(p)
 
-    ## pattern = {4, 6} -> first parent OK
-    itemset, supp = next(lcm._inner(frozenset([4, 6]), tids, limit), (None, None))
-    assert itemset == frozenset([1, 4, 6])
-    assert supp == 3
+    ## pattern = {4, 6} -> first parent fails
+    itemset, supp = next_(lcm._inner(p, tids, 1, matrix))
+    assert itemset == None
+    assert supp == None
 
-    # pattern = {} -> first parent fails
-    itemset, supp = next(lcm._inner(frozenset(), tids, limit), (None, None))
+    p = frozenset([1])
+    tids = lcm.get_tids(p)
+    # pattern = {1} -> first parent fails
+    itemset, supp = next_(lcm._inner(p, tids, 1, matrix))
     assert itemset == None
     assert supp == None
 
@@ -52,43 +68,44 @@ def test_first_parent_limit_2():
     lcm = LCM(min_supp=3)
     lcm.fit(D)
 
+    p = frozenset([2])
+    tids = lcm.get_tids(p)
     # pattern = {} -> first parent OK
     tids = lcm.item_to_tids[2]
-    itemset, supp = next(lcm._inner(frozenset(), tids, 2), (None, None))
+    itemset, supp = next(lcm._inner(p, tids, 2, matrix), (None, None))
     assert itemset == frozenset([2])
     assert supp == 5
-
-    # pattern = {4} -> first parent OK
-    tids = lcm.item_to_tids[2] & lcm.item_to_tids[4]
-    itemset, supp = next(lcm._inner(frozenset([4]), tids, 2), (None, None))
-    assert itemset == frozenset([2, 4])
-    assert supp == 3
 
 
 def test_first_parent_limit_3():
     lcm = LCM(min_supp=3)
     lcm.fit(D)
 
-    tids = lcm.item_to_tids[3]
-    itemset, supp = next(lcm._inner(frozenset(), tids, 3), (None, None))
+    p = frozenset([3])
+    tids = lcm.get_tids(p)
+    itemset, supp = next(lcm._inner(p, tids, 3, matrix), (None, None))
     assert itemset == frozenset([3])
     assert supp == 3
+
 
 def test_first_parent_limit_4():
     lcm = LCM(min_supp=3)
     lcm.fit(D)
 
-    tids = lcm.item_to_tids[4]
-    itemset, supp = next(lcm._inner(frozenset(), tids, 4), (None, None))
+    p = frozenset([4])
+    tids = lcm.get_tids(p)
+    itemset, supp = next(lcm._inner(p, tids, 4, matrix), (None, None))
     assert itemset == frozenset([4])
     assert supp == 5
+
 
 def test_first_parent_limit_5():
     lcm = LCM(min_supp=3)
     lcm.fit(D)
 
-    tids = lcm.item_to_tids[5]
-    itemset, supp = next(lcm._inner(frozenset(), tids, 5), (None, None))
+    p = frozenset([5])
+    tids = lcm.get_tids(p)
+    itemset, supp = next(lcm._inner(p, tids, 5, matrix), (None, None))
     assert itemset == frozenset([2, 5])
     assert supp == 4
 
@@ -97,10 +114,18 @@ def test_first_parent_limit_6():
     lcm = LCM(min_supp=3)
     lcm.fit(D)
 
-    tids = lcm.item_to_tids[6]
-    itemset, supp = next(lcm._inner(frozenset(), tids, 6), (None, None))
+    p = frozenset([6])
+    tids = lcm.get_tids(p)
+    itemset, supp = next(lcm._inner(p, tids, 6, matrix), (None, None))
     assert itemset == frozenset([4, 6])
     assert supp == 4
+
+    p = frozenset([1])
+    tids = lcm.get_tids(p)
+    itemset, supp = next(lcm._inner(p, tids, 6, matrix), (None, None))
+    assert itemset == frozenset([1, 4, 6])
+    assert supp == 3
+
 
 def test_lcm_empty_fit():
     # 1. test with a min_supp high above the maximum supp
@@ -114,6 +139,7 @@ def test_lcm_empty_fit():
     res = lcm.fit_transform([])
     assert isinstance(res, pd.DataFrame)
     assert res.empty
+
 
 
 def test_lcm_transform():
