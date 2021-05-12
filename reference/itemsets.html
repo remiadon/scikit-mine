@@ -1,15 +1,19 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Itemsets &mdash; scikit-mine 0.0.1 documentation</title>
+  <title>Itemsets &mdash; scikit-mine 0.0.6 documentation</title>
   
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
 
   
   
@@ -17,27 +21,28 @@
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="../tutorials/datasets/index.html" />
-    <link rel="prev" title="Datasets" href="datasets.html" /> 
+    <link rel="next" title="Periodic" href="periodic.html" />
+    <link rel="prev" title="Preprocessing" href="preprocessing.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -77,6 +82,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -84,27 +90,48 @@
               
             
             
-              <p class="caption"><span class="caption-text">Installation &amp; API</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="datasets.html">Datasets</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Itemsets</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#lcm">LCM</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p class="caption"><span class="caption-text">Tutorials</span></p>
+              <p><span class="caption-text">Installation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/datasets/fetch_fimi_datasets.html">fetch fimi datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorials/itemsets/LCM_on_chess.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation from pypi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html#installation-from-sources">Installation from sources</a></li>
+</ul>
+<p><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature_extraction.html">Feature Extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="preprocessing.html">Preprocessing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Itemsets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#slim">SLIM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lcm">LCM</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="periodic.html">Periodic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="emerging.html">Emerging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base.html">Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="callbacks.html">Callback API</a></li>
+</ul>
+<p><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/datasets/fetch_fimi_datasets.html">fetch FIMI datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/datasets/synthetic_transactions.html">Generate synthetic data to train on</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/itemsets/LCM_on_chess.html">Linear time Closed item set Miner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/itemsets/SLIM.html">SLIM for market basket analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/itemsets/symbolic_classifier.html">Building a symbolic classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/callbacks/callbacks.html">Callback API demo</a></li>
+</ul>
+<p><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sklearn_compat.html">Compatibility with Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CONTRIBUTING.html#inclusion-criteria">Inclusion criteria</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CONTRIBUTING.html#development-process">Development process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HISTORY.html">History</a></li>
 </ul>
 
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -143,9 +170,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="index.html">API Reference</a> &raquo;</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Itemsets</li>
     
@@ -190,24 +215,305 @@
     text-align: unset;
 }
 </style>
-<div class="section" id="itemsets">
+<section id="itemsets">
 <span id="id1"></span><h1>Itemsets<a class="headerlink" href="#itemsets" title="Permalink to this headline">¶</a></h1>
 <p>Models and functions to mine mere itemsets</p>
-<div class="section" id="lcm">
-<h2>LCM<a class="headerlink" href="#lcm" title="Permalink to this headline">¶</a></h2>
+<section id="slim">
+<h2>SLIM<a class="headerlink" href="#slim" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
-<dt id="skmine.itemsets.LCM">
-<em class="property">class </em><code class="sig-prename descclassname">skmine.itemsets.</code><code class="sig-name descname">LCM</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">min_supp</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/itemsets/lcm.html#LCM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.itemsets.LCM" title="Permalink to this definition">¶</a></dt>
-<dd><p>Linear time Closed item set Miner.</p>
+<dt id="skmine.itemsets.SLIM">
+<em class="property">class </em><code class="sig-prename descclassname">skmine.itemsets.</code><code class="sig-name descname">SLIM</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">k</span><span class="o">=</span><span class="default_value">50</span></em>, <em class="sig-param"><span class="n">pruning</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">n_items</span><span class="o">=</span><span class="default_value">200</span></em>, <em class="sig-param"><span class="n">tol</span><span class="o">=</span><span class="default_value">0.5</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/itemsets/slim.html#SLIM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.itemsets.SLIM" title="Permalink to this definition">¶</a></dt>
+<dd><p>SLIM: Directly Mining Descriptive Patterns</p>
+<p>SLIM looks for a compressed representation of transactional data.
+This compressed representation if a set of descriptive patterns,
+and can be used to:</p>
+<ul class="simple">
+<li><p>provide a natively interpretable modeling of this data</p></li>
+<li><p>make predictions on new data, using this condensed representation as an encoding scheme</p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>min_supp</strong> (<em>int</em><em> or </em><em>float</em><em>, </em><em>default=2</em>) – The minimum support for itemsets to be rendered in the output
-Either an int representing the absolute support, or a float for relative support</p></li>
-<li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>default=1</em>) – The number of jobs to use for the computation. Parallelism is done by launching a job
-to compute a descent on each root node of the closed itemset lattice.
-Processes are preffered over threads.</p></li>
+<li><p><strong>k</strong> (<em>int</em><em>, </em><em>default=50</em>) – Number of non-singleton itemsets to mine.
+A singleton is an itemset containing a single item.</p></li>
+<li><p><strong>pruning</strong> (<em>bool</em><em>, </em><em>default=True</em>) – Either to activate pruning or not. Pruned itemsets may be useful at
+prediction time, so it is usually recommended to set it to <cite>False</cite>
+to build a classifier. The model will be less concise, but will lead
+to more accurate predictions on average.</p></li>
+<li><p><strong>n_items</strong> (<em>int</em><em>, </em><em>default=200</em>) – <p>Number of most frequent items to consider for mining.
+As SLIM is highly dependant from the set of symbols from which
+it refines its codetable,
+lowering this argument will significantly improve runtime.</p>
+<p>Note: The reconstruction is lossless from this set of items. If the input data
+has more than <cite>n_items</cite> items, then the reconstruction will be lossy w.r.t this
+input data.</p>
+</p></li>
+<li><p><strong>tol</strong> (<em>float</em><em>, </em><em>default=0.5</em>) – Minimum compression gain (in bits) for a candidate to be accepted</p></li>
 </ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skmine.itemsets</span> <span class="kn">import</span> <span class="n">SLIM</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;bananas&#39;</span><span class="p">,</span> <span class="s1">&#39;milk&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;milk&#39;</span><span class="p">,</span> <span class="s1">&#39;bananas&#39;</span><span class="p">,</span> <span class="s1">&#39;cookies&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;cookies&#39;</span><span class="p">,</span> <span class="s1">&#39;butter&#39;</span><span class="p">,</span> <span class="s1">&#39;tea&#39;</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SLIM</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">D</span><span class="p">)</span><span class="o">.</span><span class="n">discover</span><span class="p">(</span><span class="n">singletons</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">usage_tids</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">(bananas, milk)    [0, 1]</span>
+<span class="go">(butter, tea)         [2]</span>
+<span class="go">(cookies,)         [1, 2]</span>
+<span class="go">dtype: object</span>
+</pre></div>
+</div>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets">1</span></dt>
+<dd><p>Smets, K &amp; Vreeken, J
+“Slim: Directly Mining Descriptive Patterns”, 2012</p>
+</dd>
+<dt class="label" id="id3"><span class="brackets">2</span></dt>
+<dd><p>Gandhi, M &amp; Vreeken, J
+“Slimmer, outsmarting Slim”, 2014</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="skmine.itemsets.SLIM.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">D</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/itemsets/slim.html#SLIM.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.itemsets.SLIM.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>fit SLIM on a transactional dataset</p>
+<p>This generate new candidate patterns and add those which improve compression,
+iteratibely refining <code class="docutils literal notranslate"><span class="pre">self.codetable_</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>D</strong> (<em>iterable of iterables</em><em> or </em><em>array-like</em>) – Transactional dataset, either as an iterable of iterables
+or encoded as tabular binary data</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skmine.itemsets.SLIM.decision_function">
+<code class="sig-name descname">decision_function</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">D</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/itemsets/slim.html#SLIM.decision_function"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.itemsets.SLIM.decision_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute covers on new data, and return code length</p>
+<p>This function is named <code class="docutils literal notranslate"><span class="pre">decision_function</span></code> because code lengths
+represent the distance between a point and the current codetable.</p>
+<p>Setting <code class="docutils literal notranslate"><span class="pre">pruning</span></code> to False when creating the model
+is recommended to cover unseen data, and especially when building a classifier.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>D</strong> (<em>pd.DataFrame</em><em> or </em><em>np.ndarray</em>) – new data to make predictions on, in tabular format</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skmine.itemsets</span> <span class="kn">import</span> <span class="n">SLIM</span><span class="p">;</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">to_tabular</span><span class="p">(</span><span class="n">D</span><span class="p">):</span> <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">D</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;|&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s2">&quot;|&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;bananas&#39;</span><span class="p">,</span> <span class="s1">&#39;milk&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;milk&#39;</span><span class="p">,</span> <span class="s1">&#39;bananas&#39;</span><span class="p">,</span> <span class="s1">&#39;cookies&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;cookies&#39;</span><span class="p">,</span> <span class="s1">&#39;butter&#39;</span><span class="p">,</span> <span class="s1">&#39;tea&#39;</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_D</span> <span class="o">=</span> <span class="n">to_tabular</span><span class="p">([[</span><span class="s1">&#39;cookies&#39;</span><span class="p">,</span> <span class="s1">&#39;butter&#39;</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">slim</span> <span class="o">=</span> <span class="n">SLIM</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">to_tabular</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">slim</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">new_D</span><span class="p">)</span>
+<span class="go">0   -1.321928</span>
+<span class="go">dtype: float32</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#skmine.itemsets.SLIM.cover" title="skmine.itemsets.SLIM.cover"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cover</span></code></a>, <a class="reference internal" href="#skmine.itemsets.SLIM.discover" title="skmine.itemsets.SLIM.discover"><code class="xref py py-obj docutils literal notranslate"><span class="pre">discover</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skmine.itemsets.SLIM.generate_candidates">
+<code class="sig-name descname">generate_candidates</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stack</span><span class="o">=</span><span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/itemsets/slim.html#SLIM.generate_candidates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.itemsets.SLIM.generate_candidates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate candidates from the current codetable (SLIM is any-time)</p>
+<p>Note that <cite>stack</cite> is updated during the execution of this method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stack</strong> (<em>set</em><em>[</em><em>frozenset</em><em>]</em><em>, </em><em>default=None</em>) – a stack of already-seen candidates to be excluded</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>iterator[tuple(frozenset, Bitmap)]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skmine.itemsets.SLIM.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">candidate</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/itemsets/slim.html#SLIM.evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.itemsets.SLIM.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate <code class="docutils literal notranslate"><span class="pre">candidate</span></code>, considering the current codetable and a dataset <code class="docutils literal notranslate"><span class="pre">D</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>candidate</strong> (<em>frozenset</em>) – a new candidate to be evaluated</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>updated (data size, model size, codetable)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(float, float, dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skmine.itemsets.SLIM.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">candidate</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">model_size</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">data_size</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">usages</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/itemsets/slim.html#SLIM.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.itemsets.SLIM.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the current codetable.</p>
+<p>If <cite>candidate</cite> is passed as None, <cite>model_size</cite>, <cite>data_size</cite> and <cite>usages</cite> will be used
+If <cite>candidate</cite> is not None, <cite>model_size</cite>, <cite>data_size</cite> and <cite>usages</cite>
+will be computed by calling <cite>.evaluate</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>candidate</strong> (<em>frozenset</em><em>, </em><em>default=None</em>) – candidate to be inserted</p></li>
+<li><p><strong>model_size</strong> (<em>float</em><em>, </em><em>default=None</em>) – new model size (in bits) to be set</p></li>
+<li><p><strong>data_size</strong> (<em>float</em>) – new data size (in bits) to be set</p></li>
+<li><p><strong>usages</strong> (<em>dict</em><em>, </em><em>default=None</em>) – optional for usage outside of this class
+eg. if one simply needs to include an itemset in the current codetable
+as in interactive data mining</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>AssertionError</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skmine.itemsets.SLIM.cover">
+<code class="sig-name descname">cover</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">D</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/itemsets/slim.html#SLIM.cover"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.itemsets.SLIM.cover" title="Permalink to this definition">¶</a></dt>
+<dd><p>cover unseen data</p>
+<p>items never seen are dropped out</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skmine.itemsets</span> <span class="kn">import</span> <span class="n">SLIM</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ABC&quot;</span><span class="p">,</span> <span class="s2">&quot;AB&quot;</span><span class="p">,</span> <span class="s2">&quot;BCD&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">SLIM</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">cover</span><span class="p">([</span><span class="s2">&quot;BC&quot;</span><span class="p">,</span> <span class="s2">&quot;AB&quot;</span><span class="p">])</span>
+<span class="go">   (A, B)   (B,)   (C,)</span>
+<span class="go">0   False   True   True</span>
+<span class="go">1    True  False  False</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skmine.itemsets.SLIM.discover">
+<code class="sig-name descname">discover</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">singletons</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">usage_tids</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">drop_null_usage</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/itemsets/slim.html#SLIM.discover"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.itemsets.SLIM.discover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a user-friendly copy of the codetable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>singletons</strong> (<em>bool</em><em>, </em><em>default=False</em>) – Either to include itemsets of length 1 in the result</p></li>
+<li><p><strong>usage_tids</strong> (<em>bool</em><em>, </em><em>default=False</em>) – Either to return transaction ids for an itemset (usage) or its codelength</p></li>
+<li><p><strong>drop_null_usage</strong> (<em>bool</em><em>, </em><em>default=True</em>) – Either to include itemset with no usage in the training data
+(i.e itemsets under cover of other itemsets)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skmine.itemsets</span> <span class="kn">import</span> <span class="n">SLIM</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ABC&quot;</span><span class="p">,</span> <span class="s2">&quot;AB&quot;</span><span class="p">,</span> <span class="s2">&quot;BCD&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SLIM</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">D</span><span class="p">)</span><span class="o">.</span><span class="n">discover</span><span class="p">(</span><span class="n">singletons</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">usage_tids</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop_null_usage</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">(A, B)    [0, 1]</span>
+<span class="go">(B,)         [2]</span>
+<span class="go">(A,)          []</span>
+<span class="go">(C,)      [0, 2]</span>
+<span class="go">(D,)         [2]</span>
+<span class="go">dtype: object</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>codetable containing patterns and ids of transactions in which they are used</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pd.Series</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skmine.itemsets.SLIM.reconstruct">
+<code class="sig-name descname">reconstruct</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/itemsets/slim.html#SLIM.reconstruct"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.itemsets.SLIM.reconstruct" title="Permalink to this definition">¶</a></dt>
+<dd><p>reconstruct the original data from the current <cite>self.codetable_</cite></p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skmine.itemsets.SLIM.get_support">
+<code class="sig-name descname">get_support</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">items</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/itemsets/slim.html#SLIM.get_support"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.itemsets.SLIM.get_support" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get support from an itemset</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Items in an itemset must be passed as positional arguments</p>
+<p>Unseen items will throw errors</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skmine.itemsets.SLIM.prefit">
+<code class="sig-name descname">prefit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">D</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/itemsets/slim.html#SLIM.prefit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.itemsets.SLIM.prefit" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>D</strong> (<em>iterable of iterables</em><em> or </em><em>array-like</em>) – Transactional dataset, either as an iterable of iterables
+or encoded as tabular binary data</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>works in 3 steps</p>
+<ol class="arabic simple">
+<li><p>ingest data <cite>D</cite></p></li>
+<li><p>track bitmaps for the top <cite>self.n_items</cite> frequent items from <cite>D</cite></p></li>
+<li><p>set <cite>self.data_size_</cite> and <cite>self.model_size</cite> given the standard codetable</p></li>
+</ol>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="lcm">
+<h2>LCM<a class="headerlink" href="#lcm" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="skmine.itemsets.LCM">
+<em class="property">class </em><code class="sig-prename descclassname">skmine.itemsets.</code><code class="sig-name descname">LCM</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">min_supp</span><span class="o">=</span><span class="default_value">0.2</span></em>, <em class="sig-param"><span class="n">max_depth</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/itemsets/lcm.html#LCM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.itemsets.LCM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Linear time Closed item set Miner.</p>
+<p>LCM can be used as a <strong>generic purpose</strong> miner, yielding some patterns
+that will be later submitted to a custom acceptance criterion.</p>
+<p>It can also be used to simply discover the set of <strong>closed itemsets</strong> from
+a transactional dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>min_supp</strong> (<em>int</em><em> or </em><em>float</em><em>, </em><em>default=0.2</em>) – The minimum support for itemsets to be rendered in the output
+Either an int representing the absolute support, or a float for relative support
+Default to 0.2 (20%)</p></li>
+<li><p><strong>max_depth</strong> (<em>int</em><em>, </em><em>default=20</em>) – Maximum depth for exploration in the search space.
+When going into recursion, we check if the current depth
+is <strong>strictly greater</strong> than <cite>max_depth</cite>.
+If this is the case, we stop.
+This can avoid cumbersome computation.
+A <strong>root node is considered of depth 0</strong>.</p></li>
+<li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>default=1</em>) – The number of jobs to use for the computation. Each single item is attributed a job
+to discover potential itemsets, considering this item as a root in the search space.
+<strong>Processes are preffered</strong> over threads.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id4"><span class="brackets">1</span></dt>
+<dd><p>Takeaki Uno, Masashi Kiyomi, Hiroki Arimura
+“LCM ver. 2: Efficient mining algorithms for frequent/closed/maximal itemsets”, 2004</p>
+</dd>
+<dt class="label" id="id5"><span class="brackets">2</span></dt>
+<dd><p>Alexandre Termier
+“Pattern mining rock: more, faster, better”</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -215,48 +521,48 @@ Processes are preffered over threads.</p></li>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skmine.datasets.fimi</span> <span class="kn">import</span> <span class="n">fetch_chess</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">chess</span> <span class="o">=</span> <span class="n">fetch_chess</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lcm</span> <span class="o">=</span> <span class="n">LCM</span><span class="p">(</span><span class="n">min_supp</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">patterns</span> <span class="o">=</span> <span class="n">lcm</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">chess</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">patterns</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">patterns</span> <span class="o">=</span> <span class="n">lcm</span><span class="o">.</span><span class="n">fit_discover</span><span class="p">(</span><span class="n">chess</span><span class="p">)</span>      
+<span class="gp">&gt;&gt;&gt; </span><span class="n">patterns</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>                         
 <span class="go">    itemset support</span>
 <span class="go">0      (58)    3195</span>
 <span class="go">1  (11, 58)    2128</span>
 <span class="go">2  (15, 58)    2025</span>
 <span class="go">3  (17, 58)    2499</span>
 <span class="go">4  (21, 58)    2224</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">patterns</span><span class="p">[</span><span class="n">patterns</span><span class="o">.</span><span class="n">itemset</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1"># only keeps itemsets longer than 3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">patterns</span><span class="p">[</span><span class="n">patterns</span><span class="o">.</span><span class="n">itemset</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span>  
 </pre></div>
 </div>
 <dl class="py method">
 <dt id="skmine.itemsets.LCM.fit">
-<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">D</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/itemsets/lcm.html#LCM.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.itemsets.LCM.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>fit LCM on the transactional database
-This simply iterates over transactions of D in order to keep
-track of every item and transactions ids related</p>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">D</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/itemsets/lcm.html#LCM.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.itemsets.LCM.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>fit LCM on the transactional database, by keeping records of singular items
+and their transaction ids.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>D</strong> (<em>pd.Series</em><em> or </em><em>Iterable</em>) – The input transactional database
-Where every entry contain singular items
-Items must be both hashable and comparable</p>
+<dd class="field-odd"><p><strong>D</strong> (<em>pd.Series</em><em> or </em><em>iterable</em>) – a transactional database. All entries in this D should be lists.
+If D is a pandas.Series, then <cite>(D.map(type) == list).all()</cite> should return <cite>True</cite></p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>self</strong> – a reference to the model itself</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#skmine.itemsets.LCM" title="skmine.itemsets.LCM">LCM</a></p>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>TypeError</strong> – if any entry in D is not iterable itself OR if any item is not <strong>hashable</strong>
+    OR if all items are not <strong>comparable</strong> with each other.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="skmine.itemsets.LCM.fit_transform">
-<code class="sig-name descname">fit_transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">D</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/itemsets/lcm.html#LCM.fit_transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.itemsets.LCM.fit_transform" title="Permalink to this definition">¶</a></dt>
-<dd><p>fit LCM on the transactional database, and return the set of
-closed itemsets in this database, with respect to the minium support</p>
+<dt id="skmine.itemsets.LCM.discover">
+<code class="sig-name descname">discover</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">return_tids</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">return_depth</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/itemsets/lcm.html#LCM.discover"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.itemsets.LCM.discover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the set of closed itemsets, with respect to the minium support</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>D</strong> (<em>pd.Series</em><em> or </em><em>Iterable</em>) – The input transactional database
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>D</strong> (<em>pd.Series</em><em> or </em><em>Iterable</em>) – The input transactional database
 Where every entry contain singular items
-Items must be both hashable and comparable</p>
+Items must be both hashable and comparable</p></li>
+<li><p><strong>return_tids</strong> (<em>bool</em><em>, </em><em>default=False</em>) – Either to return transaction ids along with itemset.
+Default to False, will return supports instead</p></li>
+<li><p><strong>return_depth</strong> (<em>bool</em><em>, </em><em>default=False</em>) – Either to return depth for each item or not.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><dl>
@@ -267,7 +573,7 @@ Items must be both hashable and comparable</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>itemset</p></td>
-<td><p>a <cite>frozenset</cite> of co-occured items</p></td>
+<td><p>a <cite>tuple</cite> of co-occured items</p></td>
 </tr>
 <tr class="row-even"><td><p>support</p></td>
 <td><p>frequence for this itemset</p></td>
@@ -275,19 +581,48 @@ Items must be both hashable and comparable</p>
 </tbody>
 </table>
 </dd>
+<dt>if <cite>return_tids=True</cite> then</dt><dd><table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>itemset</p></td>
+<td><p>a <cite>tuple</cite> of co-occured items</p></td>
+</tr>
+<tr class="row-even"><td><p>tids</p></td>
+<td><p>a bitmap tracking positions</p></td>
+</tr>
+</tbody>
+</table>
+</dd>
 </dl>
+<p>if <cite>return_depth</cite> is <cite>True</cite>, then a <cite>depth</cite> column is also present</p>
 </p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
 </dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skmine.itemsets</span> <span class="kn">import</span> <span class="n">LCM</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">LCM</span><span class="p">(</span><span class="n">min_supp</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit_discover</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+<span class="go">     itemset  support</span>
+<span class="go">0     (2, 5)        3</span>
+<span class="go">1  (2, 3, 5)        2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">LCM</span><span class="p">(</span><span class="n">min_supp</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit_discover</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">return_tids</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_depth</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+<span class="go">     itemset       tids depth</span>
+<span class="go">0     (2, 5)  [0, 1, 2]     0</span>
+<span class="go">1  (2, 3, 5)     [0, 1]     1</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -297,10 +632,10 @@ Items must be both hashable and comparable</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tutorials/datasets/index.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="periodic.html" class="btn btn-neutral float-right" title="Periodic" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="datasets.html" class="btn btn-neutral float-left" title="Datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="preprocessing.html" class="btn btn-neutral float-left" title="Preprocessing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -309,11 +644,19 @@ Items must be both hashable and comparable</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Rémi Adon
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -324,7 +667,6 @@ Items must be both hashable and comparable</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

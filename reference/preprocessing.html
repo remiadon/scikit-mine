@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Preprocessing &mdash; scikit-mine 0.0.6 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Itemsets" href="itemsets.html" />
+    <link rel="prev" title="Feature Extraction" href="feature_extraction.html" />
+    <link href="../_static/style.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/skmine_logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation from pypi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html#installation-from-sources">Installation from sources</a></li>
+</ul>
+<p><span class="caption-text">API Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="feature_extraction.html">Feature Extraction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Preprocessing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mdlpdiscretizer">MDLPDiscretizer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="itemsets.html">Itemsets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="periodic.html">Periodic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="emerging.html">Emerging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="base.html">Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="callbacks.html">Callback API</a></li>
+</ul>
+<p><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/datasets/fetch_fimi_datasets.html">fetch FIMI datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/datasets/synthetic_transactions.html">Generate synthetic data to train on</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/itemsets/LCM_on_chess.html">Linear time Closed item set Miner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/itemsets/SLIM.html">SLIM for market basket analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/itemsets/symbolic_classifier.html">Building a symbolic classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/callbacks/callbacks.html">Callback API demo</a></li>
+</ul>
+<p><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sklearn_compat.html">Compatibility with Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CONTRIBUTING.html#inclusion-criteria">Inclusion criteria</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CONTRIBUTING.html#development-process">Development process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HISTORY.html">History</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">scikit-mine</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Preprocessing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/reference/preprocessing.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="preprocessing">
+<span id="id1"></span><h1>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">¶</a></h1>
+<section id="mdlpdiscretizer">
+<h2>MDLPDiscretizer<a class="headerlink" href="#mdlpdiscretizer" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="skmine.preprocessing.MDLPDiscretizer">
+<em class="property">class </em><code class="sig-prename descclassname">skmine.preprocessing.</code><code class="sig-name descname">MDLPDiscretizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">random_state</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">n_jobs</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/preprocessing/mdlp_discretizer.html#MDLPDiscretizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.preprocessing.MDLPDiscretizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation of “Multi-Interval Discretization of Continuous-Valued Attributes
+for Classification Learning”.</p>
+<p>Given class labels <code class="docutils literal notranslate"><span class="pre">y</span></code>, MDLPDIscretizer discretizes continuous variables from
+<code class="docutils literal notranslate"><span class="pre">X</span></code> by minimizing the entropy in each interval.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>random_state</strong> (<em>int</em><em>, </em><em>RandomState instance</em><em>, </em><em>default=None</em>) – random state to use to shuffle the data. Can affect the outcome, leading to
+slightly different cut points if a variable contains samples with the same value
+but different labels.</p>
+</dd>
+<dt class="field-even">Variables</dt>
+<dd class="field-even"><p><strong>cut_points_</strong> (<em>dict</em>) – A mapping between columns and their respective cut points.
+If fitted on a pandas DataFrame, keys will be the DataFrame column names.</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<p>Usama M. Fayyad, Keki B. Irani
+“Multi-Interval Discretization of Continuous-Valued Attributes for Classification Learning”,
+1993</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skmine.preprocessing</span> <span class="kn">import</span> <span class="n">MDLPDiscretizer</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_iris</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">iris</span> <span class="o">=</span> <span class="n">load_iris</span><span class="p">()</span>                      
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">iris</span><span class="o">.</span><span class="n">target</span>           
+<span class="gp">&gt;&gt;&gt; </span><span class="n">disc</span> <span class="o">=</span> <span class="n">MDLPDiscretizer</span><span class="p">()</span>                
+<span class="gp">&gt;&gt;&gt; </span><span class="n">disc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>                          
+<span class="gp">&gt;&gt;&gt; </span><span class="n">disc</span><span class="o">.</span><span class="n">cut_points_</span>                        
+<span class="go">{0: array([5.5, 6.2]), 1: array([2.9, 3.3]), 2: array([2.45, 4.9 ]), 3: array([0.8, 1.7])}</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="skmine.preprocessing.MDLPDiscretizer.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/preprocessing/mdlp_discretizer.html#MDLPDiscretizer.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.preprocessing.MDLPDiscretizer.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>fit the MLDP discretizer on an input matrix <code class="docutils literal notranslate"><span class="pre">X</span></code>, given a label vector <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>np.ndarray</em><em> or </em><em>pd.DataFrame of shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – The input matrix containing features. A set of cut points
+will be affected to each feature</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray of pd.Series of shape</em><em>(</em><em>n_samples</em><em>,</em><em>)</em>) – The label vector used to discretize <code class="docutils literal notranslate"><span class="pre">X</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skmine.preprocessing.MDLPDiscretizer.discover">
+<code class="sig-name descname">discover</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/preprocessing/mdlp_discretizer.html#MDLPDiscretizer.discover"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.preprocessing.MDLPDiscretizer.discover" title="Permalink to this definition">¶</a></dt>
+<dd><p>user-friendly view on cut points</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skmine.preprocessing.MDLPDiscretizer.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/preprocessing/mdlp_discretizer.html#MDLPDiscretizer.transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.preprocessing.MDLPDiscretizer.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Discretizes the input matrix X</p>
+<p>This applies the cutpoints their respective columns</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="skmine.preprocessing.MDLPDiscretizer.fit_transform">
+<code class="sig-name descname">fit_transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">y</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/skmine/preprocessing/mdlp_discretizer.html#MDLPDiscretizer.fit_transform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skmine.preprocessing.MDLPDiscretizer.fit_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>fit on X and y, then transform X</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="itemsets.html" class="btn btn-neutral float-right" title="Itemsets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="feature_extraction.html" class="btn btn-neutral float-left" title="Feature Extraction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Rémi Adon
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,15 +1,18 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>skmine.datasets.fimi &mdash; scikit-mine 0.0.1 documentation</title>
+  <title>skmine.datasets.fimi &mdash; scikit-mine 0.0.6 documentation</title>
   
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
 
   
   
@@ -17,25 +20,26 @@
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link href="../../../_static/style.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -75,6 +79,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -82,20 +87,44 @@
               
             
             
-              <p class="caption"><span class="caption-text">Installation &amp; API</span></p>
+              <p><span class="caption-text">Installation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../reference/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation from pypi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html#installation-from-sources">Installation from sources</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Tutorials</span></p>
+<p><span class="caption-text">API Reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/datasets/fetch_fimi_datasets.html">fetch fimi datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/itemsets/LCM_on_chess.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/feature_extraction.html">Feature Extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/preprocessing.html">Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/itemsets.html">Itemsets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/periodic.html">Periodic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/emerging.html">Emerging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/base.html">Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/callbacks.html">Callback API</a></li>
+</ul>
+<p><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/datasets/fetch_fimi_datasets.html">fetch FIMI datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/datasets/synthetic_transactions.html">Generate synthetic data to train on</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/itemsets/LCM_on_chess.html">Linear time Closed item set Miner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/itemsets/SLIM.html">SLIM for market basket analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/itemsets/symbolic_classifier.html">Building a symbolic classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/callbacks/callbacks.html">Callback API demo</a></li>
+</ul>
+<p><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../sklearn_compat.html">Compatibility with Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html#inclusion-criteria">Inclusion criteria</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html#development-process">Development process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../HISTORY.html">History</a></li>
 </ul>
 
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -134,7 +163,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
@@ -162,16 +191,18 @@
 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">urlopen</span>
+<span class="kn">from</span> <span class="nn">.conf</span> <span class="kn">import</span> <span class="n">urlopen</span>
 <span class="kn">from</span> <span class="nn">._base</span> <span class="kn">import</span> <span class="n">get_data_home</span>
 
-<span class="n">BASE_URL</span> <span class="o">=</span> <span class="s1">&#39;http://fimi.uantwerpen.be/data/&#39;</span>
+<span class="n">BASE_URL</span> <span class="o">=</span> <span class="s2">&quot;http://fimi.uantwerpen.be/data/&quot;</span>
+
 
 <span class="k">def</span> <span class="nf">_preprocess</span><span class="p">(</span><span class="n">transaction</span><span class="p">):</span>
     <span class="n">s</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">transaction</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
 
-<div class="viewcode-block" id="fetch_any"><a class="viewcode-back" href="../../../skmine.datasets.html#skmine.datasets.fimi.fetch_any">[docs]</a><span class="k">def</span> <span class="nf">fetch_any</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">data_home</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="fetch_any"><a class="viewcode-back" href="../../../reference/datasets.html#skmine.datasets.fimi.fetch_any">[docs]</a><span class="k">def</span> <span class="nf">fetch_any</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">data_home</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Base loader for all datasets from the FIMI repository</span>
 <span class="sd">    Each unique transaction will be represented as a Python list in the resulting pandas Series</span>
 
@@ -194,26 +225,33 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">data_home</span> <span class="o">=</span> <span class="n">data_home</span> <span class="ow">or</span> <span class="n">get_data_home</span><span class="p">()</span>
     <span class="n">filepath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_home</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="n">name</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">data_home</span><span class="p">):</span>  <span class="c1"># already fetched</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>                                  <span class="c1"># not fetched yet</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># not fetched yet</span>
         <span class="n">url</span> <span class="o">=</span> <span class="n">BASE_URL</span> <span class="o">+</span> <span class="n">filename</span>
         <span class="n">resp</span> <span class="o">=</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
         <span class="n">it</span> <span class="o">=</span> <span class="p">(</span><span class="n">_preprocess</span><span class="p">(</span><span class="n">transaction</span><span class="p">)</span> <span class="k">for</span> <span class="n">transaction</span> <span class="ow">in</span> <span class="n">resp</span><span class="p">)</span>
-        <span class="n">name</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
         <span class="n">s</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
 
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">l</span><span class="p">)))</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not cast </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2"> items to integers&quot;</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="n">s</span></div>
 
-<div class="viewcode-block" id="fetch_chess"><a class="viewcode-back" href="../../../skmine.datasets.html#skmine.datasets.fimi.fetch_chess">[docs]</a><span class="k">def</span> <span class="nf">fetch_chess</span><span class="p">(</span><span class="n">data_home</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="fetch_chess"><a class="viewcode-back" href="../../../reference/datasets.html#skmine.datasets.fimi.fetch_chess">[docs]</a><span class="k">def</span> <span class="nf">fetch_chess</span><span class="p">(</span><span class="n">data_home</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Fetch and return the chess dataset (Frequent Itemset Mining)</span>
-<span class="sd">    Each unique transaction will be represented as a Python list in the resulting pandas Series</span>
 
 <span class="sd">    ====================   ==============</span>
 <span class="sd">    Nb of items                        75</span>
 <span class="sd">    Nb of transactions               3196</span>
 <span class="sd">    Avg transaction size             37.0</span>
+<span class="sd">    Density                         0.493</span>
 <span class="sd">    ====================   ==============</span>
 
 <span class="sd">    Parameters</span>
@@ -226,18 +264,19 @@
 <span class="sd">    -------</span>
 <span class="sd">    pd.Series</span>
 <span class="sd">        Transactions from the chess dataset, as an in-memory pandas Series.</span>
+<span class="sd">        Each unique transaction is represented as a Python list.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">fetch_any</span><span class="p">(</span><span class="s1">&#39;chess.dat&#39;</span><span class="p">,</span> <span class="n">data_home</span><span class="o">=</span><span class="n">data_home</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">fetch_any</span><span class="p">(</span><span class="s2">&quot;chess.dat&quot;</span><span class="p">,</span> <span class="n">data_home</span><span class="o">=</span><span class="n">data_home</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="fetch_connect"><a class="viewcode-back" href="../../../skmine.datasets.html#skmine.datasets.fimi.fetch_connect">[docs]</a><span class="k">def</span> <span class="nf">fetch_connect</span><span class="p">(</span><span class="n">data_home</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Fetch and return the connect dataset (Frequent Itemset Mining)</span>
-<span class="sd">    Each unique transaction will be represented as a Python list in the resulting pandas Series</span>
+<div class="viewcode-block" id="fetch_connect"><a class="viewcode-back" href="../../../reference/datasets.html#skmine.datasets.fimi.fetch_connect">[docs]</a><span class="k">def</span> <span class="nf">fetch_connect</span><span class="p">(</span><span class="n">data_home</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Fetch and return the connect dataset (Frequent Itemset Mining).</span>
 
 <span class="sd">    ====================   ==============</span>
 <span class="sd">    Nb of items                       129</span>
 <span class="sd">    Nb of transactions              67557</span>
 <span class="sd">    Avg transaction size             43.0</span>
+<span class="sd">    Density                         0.333</span>
 <span class="sd">    ====================   ==============</span>
 
 <span class="sd">    Parameters</span>
@@ -250,18 +289,28 @@
 <span class="sd">    -------</span>
 <span class="sd">    pd.Series</span>
 <span class="sd">        Transactions from the connect dataset, as an in-memory pandas Series.</span>
+<span class="sd">        Each unique transaction is represented as a Python list.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">fetch_any</span><span class="p">(</span><span class="s1">&#39;connect.dat&#39;</span><span class="p">,</span> <span class="n">data_home</span><span class="o">=</span><span class="n">data_home</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">fetch_any</span><span class="p">(</span><span class="s2">&quot;connect.dat&quot;</span><span class="p">,</span> <span class="n">data_home</span><span class="o">=</span><span class="n">data_home</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="fetch_mushroom"><a class="viewcode-back" href="../../../skmine.datasets.html#skmine.datasets.fimi.fetch_mushroom">[docs]</a><span class="k">def</span> <span class="nf">fetch_mushroom</span><span class="p">(</span><span class="n">data_home</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="fetch_mushroom"><a class="viewcode-back" href="../../../reference/datasets.html#skmine.datasets.fimi.fetch_mushroom">[docs]</a><span class="k">def</span> <span class="nf">fetch_mushroom</span><span class="p">(</span><span class="n">data_home</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">return_D_y</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Fetch and return the mushroom dataset (Frequent Itemset Mining)</span>
-<span class="sd">    Each unique transaction will be represented as a Python list in the resulting pandas Series</span>
+
+<span class="sd">    The Mushroom data set includes descriptions of hypothetical samples corresponding</span>
+<span class="sd">    to 23 species of gilled mushrooms in the Agaricus and Lepiota Family.</span>
+
+<span class="sd">    It contains information about 8124 mushrooms (transactions).</span>
+<span class="sd">    4208 (51.8%) are edible and 3916 (48.2%) are poisonous.</span>
+
+<span class="sd">    The data contains 22 nomoinal features plus the class attribure (edible or not).</span>
+<span class="sd">    These features were translated into 117 items.</span>
 
 <span class="sd">    ====================   ==============</span>
-<span class="sd">    Nb of items                       119</span>
+<span class="sd">    Nb of items                       117</span>
 <span class="sd">    Nb of transactions               8124</span>
-<span class="sd">    Avg transaction size             23.0</span>
+<span class="sd">    Avg transaction size             22.0</span>
+<span class="sd">    Density                         0.188</span>
 <span class="sd">    ====================   ==============</span>
 
 <span class="sd">    Parameters</span>
@@ -270,22 +319,51 @@
 <span class="sd">        Specify another download and cache folder for the datasets. By default</span>
 <span class="sd">        all scikit-mine data is stored in `scikit-mine_data`.</span>
 
+<span class="sd">    return_D_y: bool, default=False.</span>
+<span class="sd">        If True, returns a tuple for both the data and the associated labels</span>
+<span class="sd">        (0 for edible, 1 for poisonous)</span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    pd.Series</span>
+<span class="sd">    D: pd.Series</span>
 <span class="sd">        Transactions from the mushroom dataset, as an in-memory pandas Series.</span>
+<span class="sd">        Each unique transaction is represented as a Python list.</span>
+
+<span class="sd">    (D, y) : tuple</span>
+<span class="sd">        if ``return_D_y`` is True</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from skmine.datasets.fimi import fetch_mushroom</span>
+<span class="sd">    &gt;&gt;&gt; from skmine.datasets.utils import describe</span>
+<span class="sd">    &gt;&gt;&gt; D, y = fetch_mushroom(return_D_y=True)</span>
+<span class="sd">    &gt;&gt;&gt; describe(D)[&#39;n_items&#39;]</span>
+<span class="sd">    117</span>
+<span class="sd">    &gt;&gt;&gt; y.value_counts()</span>
+<span class="sd">    0    4208</span>
+<span class="sd">    1    3916</span>
+<span class="sd">    Name: mushroom, dtype: int64</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">fetch_any</span><span class="p">(</span><span class="s1">&#39;mushroom.dat&#39;</span><span class="p">,</span> <span class="n">data_home</span><span class="o">=</span><span class="n">data_home</span><span class="p">)</span></div>
+    <span class="n">mush</span> <span class="o">=</span> <span class="n">fetch_any</span><span class="p">(</span><span class="s2">&quot;mushroom.dat&quot;</span><span class="p">,</span> <span class="n">data_home</span><span class="o">=</span><span class="n">data_home</span><span class="p">)</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">mush</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+    <span class="k">if</span> <span class="n">return_D_y</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">mush</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># 2 is edible, 1 is poisonous</span>
+        <span class="k">return</span> <span class="n">D</span><span class="p">,</span> <span class="n">y</span>
+
+    <span class="k">return</span> <span class="n">D</span></div>
 
 
-<div class="viewcode-block" id="fetch_pumsb"><a class="viewcode-back" href="../../../skmine.datasets.html#skmine.datasets.fimi.fetch_pumsb">[docs]</a><span class="k">def</span> <span class="nf">fetch_pumsb</span><span class="p">(</span><span class="n">data_home</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="fetch_pumsb"><a class="viewcode-back" href="../../../reference/datasets.html#skmine.datasets.fimi.fetch_pumsb">[docs]</a><span class="k">def</span> <span class="nf">fetch_pumsb</span><span class="p">(</span><span class="n">data_home</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Fetch and return the pumsb dataset (Frequent Itemset Mining)</span>
-<span class="sd">    Each unique transaction will be represented as a Python list in the resulting pandas Series</span>
+
+<span class="sd">    The Pumsb dataset contains census data for population and housing.</span>
 
 <span class="sd">    ====================   ==============</span>
 <span class="sd">    Nb of items                      2113</span>
 <span class="sd">    Nb of transactions              49046</span>
 <span class="sd">    Avg transaction size             74.0</span>
+<span class="sd">    Density                         0.035</span>
 <span class="sd">    ====================   ==============</span>
 
 <span class="sd">    Parameters</span>
@@ -297,19 +375,20 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    pd.Series</span>
-<span class="sd">        Transactions from the pumsb dataset, as an in-memory pandas Series</span>
+<span class="sd">        Transactions from the pumsb dataset, as an in-memory pandas Series.</span>
+<span class="sd">        Each unique transaction is represented as a Python list.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">fetch_any</span><span class="p">(</span><span class="s1">&#39;pumsb.dat&#39;</span><span class="p">,</span> <span class="n">data_home</span><span class="o">=</span><span class="n">data_home</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">fetch_any</span><span class="p">(</span><span class="s2">&quot;pumsb.dat&quot;</span><span class="p">,</span> <span class="n">data_home</span><span class="o">=</span><span class="n">data_home</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="fetch_pumsb_star"><a class="viewcode-back" href="../../../skmine.datasets.html#skmine.datasets.fimi.fetch_pumsb_star">[docs]</a><span class="k">def</span> <span class="nf">fetch_pumsb_star</span><span class="p">(</span><span class="n">data_home</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="fetch_pumsb_star"><a class="viewcode-back" href="../../../reference/datasets.html#skmine.datasets.fimi.fetch_pumsb_star">[docs]</a><span class="k">def</span> <span class="nf">fetch_pumsb_star</span><span class="p">(</span><span class="n">data_home</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Fetch and return the pumsb_star dataset (Frequent Itemset Mining)</span>
-<span class="sd">    Each unique transaction will be represented as a Python list in the resulting pandas Series</span>
 
 <span class="sd">    ====================   ==============</span>
 <span class="sd">    Nb of items                      2088</span>
 <span class="sd">    Nb of transactions              49046</span>
 <span class="sd">    Avg transaction size            50.48</span>
+<span class="sd">    Density                         0.024</span>
 <span class="sd">    ====================   ==============</span>
 
 <span class="sd">    Parameters</span>
@@ -321,19 +400,22 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    pd.Series</span>
-<span class="sd">        Transactions from the pumsb_star dataset, as an in-memory pandas Series</span>
+<span class="sd">        Transactions from the pumsb_star dataset, as an in-memory pandas Series.</span>
+<span class="sd">        Each unique transaction is represented as a Python list.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">fetch_any</span><span class="p">(</span><span class="s1">&#39;pumsb_star.dat&#39;</span><span class="p">,</span> <span class="n">data_home</span><span class="o">=</span><span class="n">data_home</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">fetch_any</span><span class="p">(</span><span class="s2">&quot;pumsb_star.dat&quot;</span><span class="p">,</span> <span class="n">data_home</span><span class="o">=</span><span class="n">data_home</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="fetch_kosarak"><a class="viewcode-back" href="../../../skmine.datasets.html#skmine.datasets.fimi.fetch_kosarak">[docs]</a><span class="k">def</span> <span class="nf">fetch_kosarak</span><span class="p">(</span><span class="n">data_home</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="fetch_kosarak"><a class="viewcode-back" href="../../../reference/datasets.html#skmine.datasets.fimi.fetch_kosarak">[docs]</a><span class="k">def</span> <span class="nf">fetch_kosarak</span><span class="p">(</span><span class="n">data_home</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Fetch and return the kosarak dataset (Frequent Itemset Mining)</span>
-<span class="sd">    Each unique transaction will be represented as a Python list in the resulting pandas Series</span>
+
+<span class="sd">    Click-stream data from a hungarian on-line news portal.</span>
 
 <span class="sd">    ====================   ==============</span>
 <span class="sd">    Nb of items                     36855</span>
 <span class="sd">    Nb of transactions             990002</span>
 <span class="sd">    Avg transaction size              8.1</span>
+<span class="sd">    Density                      0.000220</span>
 <span class="sd">    ====================   ==============</span>
 
 <span class="sd">    Parameters</span>
@@ -345,14 +427,16 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    pd.Series</span>
-<span class="sd">        Transactions from the kosarak dataset, as an in-memory pandas Series</span>
+<span class="sd">        Transactions from the kosarak dataset, as an in-memory pandas Series.</span>
+<span class="sd">        Each unique transaction is represented as a Python list.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">fetch_any</span><span class="p">(</span><span class="s1">&#39;kosarak.dat&#39;</span><span class="p">,</span> <span class="n">data_home</span><span class="o">=</span><span class="n">data_home</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">fetch_any</span><span class="p">(</span><span class="s2">&quot;kosarak.dat&quot;</span><span class="p">,</span> <span class="n">data_home</span><span class="o">=</span><span class="n">data_home</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="fetch_retail"><a class="viewcode-back" href="../../../skmine.datasets.html#skmine.datasets.fimi.fetch_retail">[docs]</a><span class="k">def</span> <span class="nf">fetch_retail</span><span class="p">(</span><span class="n">data_home</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="fetch_retail"><a class="viewcode-back" href="../../../reference/datasets.html#skmine.datasets.fimi.fetch_retail">[docs]</a><span class="k">def</span> <span class="nf">fetch_retail</span><span class="p">(</span><span class="n">data_home</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Fetch and return the retail dataset (Frequent Itemset Mining)</span>
-<span class="sd">    Each unique transaction will be represented as a Python list in the resulting pandas Series</span>
+
+<span class="sd">    Contains market basket data from a Belgian retail store, anonymized.</span>
 
 <span class="sd">    see: http://fimi.uantwerpen.be/data/retail.pdf</span>
 
@@ -360,7 +444,15 @@
 <span class="sd">    Nb of items                     16470</span>
 <span class="sd">    Nb of transactions              88162</span>
 <span class="sd">    Avg transaction size             10.3</span>
+<span class="sd">    Densisty                     0.000626</span>
 <span class="sd">    ====================   ==============</span>
+
+<span class="sd">    Retail market basket data set supplied by a anonymous Belgian retail supermarket store.</span>
+
+<span class="sd">    Results in approximately 5 months of data.</span>
+<span class="sd">    The total amount of receipts being collected equals 88,163.</span>
+
+<span class="sd">    In total, 5,133 customers have purchased at least one product during the data collection period</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -371,20 +463,24 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    pd.Series</span>
-<span class="sd">        Transactions from the retail dataset, as an in-memory pandas Series</span>
+<span class="sd">        Transactions from the retail dataset, as an in-memory pandas Series.</span>
+<span class="sd">        Each unique transaction is represented as a Python list.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">fetch_any</span><span class="p">(</span><span class="s1">&#39;retail.dat&#39;</span><span class="p">,</span> <span class="n">data_home</span><span class="o">=</span><span class="n">data_home</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">fetch_any</span><span class="p">(</span><span class="s2">&quot;retail.dat&quot;</span><span class="p">,</span> <span class="n">data_home</span><span class="o">=</span><span class="n">data_home</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="fetch_accidents"><a class="viewcode-back" href="../../../skmine.datasets.html#skmine.datasets.fimi.fetch_accidents">[docs]</a><span class="k">def</span> <span class="nf">fetch_accidents</span><span class="p">(</span><span class="n">data_home</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="fetch_accidents"><a class="viewcode-back" href="../../../reference/datasets.html#skmine.datasets.fimi.fetch_accidents">[docs]</a><span class="k">def</span> <span class="nf">fetch_accidents</span><span class="p">(</span><span class="n">data_home</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Fetch and return the accidents dataset (Frequent Itemset Mining)</span>
-<span class="sd">    Each unique transaction will be represented as a Python list in the resulting pandas Series</span>
+
+<span class="sd">    Traffic accident data, anonymized.</span>
 
 <span class="sd">    see: http://fimi.uantwerpen.be/data/accidents.pdf</span>
 
 <span class="sd">    ====================   ==============</span>
-<span class="sd">    Nb of items                     16470</span>
-<span class="sd">    Nb of transactions              88162</span>
-<span class="sd">    Avg transaction size             10.3</span>
+<span class="sd">    Nb of items                       468</span>
+<span class="sd">    Nb of transactions             340183</span>
+<span class="sd">    Avg transaction size           33.807</span>
+<span class="sd">    Density                         0.072</span>
 <span class="sd">    ====================   ==============</span>
 
 <span class="sd">    Parameters</span>
@@ -396,10 +492,11 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    pd.Series</span>
-<span class="sd">        Transactions from the accidents dataset, as an in-memory pandas Series</span>
+<span class="sd">        Transactions from the accidents dataset, as an in-memory pandas Series.</span>
+<span class="sd">        Each unique transaction is represented as a Python list.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">fetch_any</span><span class="p">(</span><span class="s1">&#39;accidents.dat&#39;</span><span class="p">,</span> <span class="n">data_home</span><span class="o">=</span><span class="n">data_home</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">fetch_any</span><span class="p">(</span><span class="s2">&quot;accidents.dat&quot;</span><span class="p">,</span> <span class="n">data_home</span><span class="o">=</span><span class="n">data_home</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
@@ -412,11 +509,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Rémi Adon
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -427,7 +532,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

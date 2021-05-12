@@ -1,15 +1,19 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
-  
+  <meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>LCM &mdash; scikit-mine 0.0.1 documentation</title>
+  <title>Linear time Closed item set Miner &mdash; scikit-mine 0.0.6 documentation</title>
   
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
 
   
   
@@ -17,26 +21,28 @@
   
 
   
-  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="index.html" /> 
+    <link rel="next" title="SLIM for market basket analysis" href="SLIM.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="index.html" />
+    <link href="../../_static/style.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -76,6 +82,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -83,23 +90,48 @@
               
             
             
-              <p class="caption"><span class="caption-text">Installation &amp; API</span></p>
+              <p><span class="caption-text">Installation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../reference/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation from pypi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation.html#installation-from-sources">Installation from sources</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Tutorials</span></p>
+<p><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/feature_extraction.html">Feature Extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/preprocessing.html">Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/itemsets.html">Itemsets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/periodic.html">Periodic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/emerging.html">Emerging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/base.html">Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/callbacks.html">Callback API</a></li>
+</ul>
+<p><span class="caption-text">Tutorials</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../datasets/fetch_fimi_datasets.html">fetch fimi datasets</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">LCM</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#LCM-looks-for-closed-itemset-with-respect-to-an-input-minimum-support">LCM looks for closed itemset with respect to an input minimum support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/fetch_fimi_datasets.html">fetch FIMI datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datasets/synthetic_transactions.html">Generate synthetic data to train on</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Linear time Closed item set Miner</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#load-the-chess-dataset">load the chess dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fit_discover()">fit_discover()</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="SLIM.html">SLIM for market basket analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symbolic_classifier.html">Building a symbolic classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../callbacks/callbacks.html">Callback API demo</a></li>
+</ul>
+<p><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sklearn_compat.html">Compatibility with Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING.html#inclusion-criteria">Inclusion criteria</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING.html#development-process">Development process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../HISTORY.html">History</a></li>
 </ul>
 
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -138,11 +170,11 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="index.html">&lt;no title&gt;</a> &raquo;</li>
         
-      <li>LCM</li>
+      <li>Linear time Closed item set Miner</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -166,21 +198,35 @@
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput.container,
-div.nbinput.container div.prompt,
-div.nbinput.container div.input_area,
-div.nbinput.container div[class*=highlight],
-div.nbinput.container div[class*=highlight] pre,
-div.nboutput.container,
-div.nboutput.container div.prompt,
-div.nboutput.container div.output_area,
-div.nboutput.container div[class*=highlight],
-div.nboutput.container div[class*=highlight] pre {
-    background: none;
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
     border: none;
-    padding: 0 0;
+    padding: 0;
     margin: 0;
     box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
 }
 
 /* avoid gaps between output lines */
@@ -227,20 +273,33 @@ div.nboutput.container div.prompt pre {
 /* all prompts */
 div.nbinput.container div.prompt,
 div.nboutput.container div.prompt {
-    min-width: 5ex;
-    padding-top: 0.3rem;
-    padding-right: 0.3rem;
-    text-align: right;
-    flex: 0;
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
 }
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
 @media (max-width: 540px) {
     div.nbinput.container div.prompt,
     div.nboutput.container div.prompt {
+        width: unset;
         text-align: left;
         padding: 0.4em;
     }
     div.nboutput.container div.prompt.empty {
         padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
     }
 }
 
@@ -268,7 +327,7 @@ div.nboutput.container div.output_area {
 div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f5f5f5;
+    /*background: #f5f5f5;*/
 }
 
 /* override MathJax center alignment in output cells */
@@ -333,7 +392,8 @@ div.nboutput.container div.output_area div[class*=highlight].math,
 div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 0.3rem;
+    padding: 5px;
+    margin: 0;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -403,12 +463,13 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="LCM">
-<h1>LCM<a class="headerlink" href="#LCM" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="LCM-looks-for-closed-itemset-with-respect-to-an-input-minimum-support">
-<h2>LCM looks for closed itemset with respect to an input minimum support<a class="headerlink" href="#LCM-looks-for-closed-itemset-with-respect-to-an-input-minimum-support" title="Permalink to this headline">¶</a></h2>
+<section id="Linear-time-Closed-item-set-Miner">
+<h1>Linear time Closed item set Miner<a class="headerlink" href="#Linear-time-Closed-item-set-Miner" title="Permalink to this headline">¶</a></h1>
+<p>LCM looks for closed itemset with respect to an input minimum support</p>
+<section id="load-the-chess-dataset">
+<h2>load the chess dataset<a class="headerlink" href="#load-the-chess-dataset" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -419,7 +480,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -433,7 +494,7 @@ Name: chess, dtype: object
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -442,7 +503,7 @@ Name: chess, dtype: object
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -450,15 +511,19 @@ Name: chess, dtype: object
 (3196,)
 </pre></div></div>
 </div>
+</section>
+<section id="fit_discover()">
+<h2>fit_discover()<a class="headerlink" href="#fit_discover()" title="Permalink to this headline">¶</a></h2>
+<p>fit_discover makes pattern discovery more user friendly by outputting pretty formatted patterns, instead of the traditional tabular format used in the <code class="docutils literal notranslate"><span class="pre">scikit</span></code> community</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">skmine.itemsets</span> <span class="kn">import</span> <span class="n">LCM</span>
 <span class="n">lcm</span> <span class="o">=</span> <span class="n">LCM</span><span class="p">(</span><span class="n">min_supp</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="c1"># minimum support of 2000, running on 4 processes</span>
-<span class="o">%</span><span class="k">time</span> patterns = lcm.fit_transform(chess)
+<span class="o">%</span><span class="k">time</span> patterns = lcm.fit_discover(chess)
 </pre></div>
 </div>
 </div>
@@ -467,12 +532,12 @@ Name: chess, dtype: object
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-CPU times: user 174 ms, sys: 33.1 ms, total: 207 ms
-Wall time: 12 s
+CPU times: user 473 ms, sys: 410 ms, total: 883 ms
+Wall time: 9.56 s
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -481,7 +546,7 @@ Wall time: 12 s
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -489,13 +554,115 @@ Wall time: 12 s
 (68967, 2)
 </pre></div></div>
 </div>
+<p>This format in which patterns are rendered makes post hoc analysis easier</p>
+<p>Here we filter patterns with a length strictly superior to 3</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">patterns</span><span class="p">[</span><span class="n">patterns</span><span class="o">.</span><span class="n">itemset</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>itemset</th>
+      <th>support</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>12</th>
+      <td>(5, 7, 17, 58)</td>
+      <td>2204</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>(5, 9, 17, 58)</td>
+      <td>2088</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>(5, 7, 21, 58)</td>
+      <td>2034</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>(5, 7, 25, 58)</td>
+      <td>2539</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>(5, 9, 25, 58)</td>
+      <td>2365</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>68956</th>
+      <td>(29, 40, 48, 52, 54)</td>
+      <td>2012</td>
+    </tr>
+    <tr>
+      <th>68957</th>
+      <td>(36, 40, 48, 52, 54)</td>
+      <td>2012</td>
+    </tr>
+    <tr>
+      <th>68964</th>
+      <td>(29, 40, 52, 70)</td>
+      <td>2001</td>
+    </tr>
+    <tr>
+      <th>68965</th>
+      <td>(29, 40, 58, 70)</td>
+      <td>2006</td>
+    </tr>
+    <tr>
+      <th>68966</th>
+      <td>(29, 40, 52, 58, 70)</td>
+      <td>2000</td>
+    </tr>
+  </tbody>
+</table>
+<p>67716 rows × 2 columns</p>
+</div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Note</span></code></p>
+<p>Even when setting a very high minimum support threshold, we discovered more than 60K from only 3196 original transactions. This is a good illustration of the so-called <strong>pattern explosion problem</strong></p>
+<hr class="docutils" />
+<p>We could also get the top-k patterns in terms of supports, with a single line of code</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">patterns</span><span class="p">[</span><span class="n">patterns</span><span class="o">.</span><span class="n">itemset</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span>
-<span class="c1"># simple syntax for post hoc filtering</span>
+<span></span><span class="n">patterns</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;support&#39;</span><span class="p">])</span>  <span class="c1"># top 10 patterns</span>
 </pre></div>
 </div>
 </div>
@@ -528,70 +695,61 @@ Wall time: 12 s
   </thead>
   <tbody>
     <tr>
-      <th>14</th>
-      <td>(25, 58, 17, 29)</td>
-      <td>2179</td>
+      <th>0</th>
+      <td>(58,)</td>
+      <td>3195</td>
     </tr>
     <tr>
-      <th>17</th>
-      <td>(3, 58, 17, 29)</td>
-      <td>2272</td>
+      <th>8824</th>
+      <td>(52,)</td>
+      <td>3185</td>
     </tr>
     <tr>
-      <th>18</th>
-      <td>(25, 58, 3, 29)</td>
-      <td>2520</td>
+      <th>2670</th>
+      <td>(52, 58)</td>
+      <td>3184</td>
     </tr>
     <tr>
-      <th>22</th>
-      <td>(25, 29, 58, 31)</td>
-      <td>2220</td>
+      <th>10651</th>
+      <td>(29,)</td>
+      <td>3181</td>
     </tr>
     <tr>
-      <th>23</th>
-      <td>(29, 58, 3, 31)</td>
-      <td>2360</td>
+      <th>29</th>
+      <td>(29, 58)</td>
+      <td>3180</td>
     </tr>
     <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
+      <th>8853</th>
+      <td>(29, 52)</td>
+      <td>3170</td>
     </tr>
     <tr>
-      <th>68958</th>
-      <td>(52, 54, 5, 40)</td>
-      <td>2034</td>
+      <th>10686</th>
+      <td>(40,)</td>
+      <td>3170</td>
     </tr>
     <tr>
-      <th>68959</th>
-      <td>(29, 54, 5, 40, 52)</td>
-      <td>2027</td>
+      <th>386</th>
+      <td>(40, 58)</td>
+      <td>3169</td>
     </tr>
     <tr>
-      <th>68964</th>
-      <td>(70, 52, 40, 29)</td>
-      <td>2001</td>
+      <th>2699</th>
+      <td>(29, 52, 58)</td>
+      <td>3169</td>
     </tr>
     <tr>
-      <th>68965</th>
-      <td>(70, 58, 40, 29)</td>
-      <td>2006</td>
-    </tr>
-    <tr>
-      <th>68966</th>
-      <td>(29, 70, 58, 40, 52)</td>
-      <td>2000</td>
+      <th>9036</th>
+      <td>(40, 52)</td>
+      <td>3159</td>
     </tr>
   </tbody>
 </table>
-<p>67716 rows × 2 columns</p>
 </div></div>
 </div>
-<hr class="docutils" />
-<p><code class="docutils literal notranslate"><span class="pre">Note</span></code></p>
-<p>Even when setting a very high minimum support threshold, we discovered more than 60K from only 3196 original transactions. This is a good illustration of the so-called <strong>pattern explosion problem</strong></p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -600,6 +758,8 @@ Wall time: 12 s
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="SLIM.html" class="btn btn-neutral float-right" title="SLIM for market basket analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -611,11 +771,19 @@ Wall time: 12 s
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Rémi Adon
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -626,7 +794,6 @@ Wall time: 12 s
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

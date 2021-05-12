@@ -1,15 +1,18 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>skmine.datasets.utils &mdash; scikit-mine 0.0.1 documentation</title>
+  <title>skmine.datasets.utils &mdash; scikit-mine 0.0.6 documentation</title>
   
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
 
   
   
@@ -17,25 +20,26 @@
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/language_data.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" /> 
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link href="../../../_static/style.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -75,6 +79,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -82,20 +87,44 @@
               
             
             
-              <p class="caption"><span class="caption-text">Installation &amp; API</span></p>
+              <p><span class="caption-text">Installation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../reference/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation from pypi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../installation.html#installation-from-sources">Installation from sources</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Tutorials</span></p>
+<p><span class="caption-text">API Reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/datasets/fetch_fimi_datasets.html">fetch fimi datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/itemsets/LCM_on_chess.html">LCM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/feature_extraction.html">Feature Extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/preprocessing.html">Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/itemsets.html">Itemsets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/periodic.html">Periodic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/emerging.html">Emerging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/base.html">Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/callbacks.html">Callback API</a></li>
+</ul>
+<p><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/datasets/fetch_fimi_datasets.html">fetch FIMI datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/datasets/synthetic_transactions.html">Generate synthetic data to train on</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/itemsets/LCM_on_chess.html">Linear time Closed item set Miner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/itemsets/SLIM.html">SLIM for market basket analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/itemsets/symbolic_classifier.html">Building a symbolic classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/callbacks/callbacks.html">Callback API demo</a></li>
+</ul>
+<p><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../sklearn_compat.html">Compatibility with Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html#inclusion-criteria">Inclusion criteria</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html#development-process">Development process</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../HISTORY.html">History</a></li>
 </ul>
 
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -134,7 +163,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
@@ -161,24 +190,74 @@
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
 
 
-<div class="viewcode-block" id="describe_itemsets"><a class="viewcode-back" href="../../../skmine.datasets.html#skmine.datasets.utils.describe_itemsets">[docs]</a><span class="k">def</span> <span class="nf">describe_itemsets</span><span class="p">(</span><span class="n">D</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="describe"><a class="viewcode-back" href="../../../reference/datasets.html#skmine.datasets.utils.describe">[docs]</a><span class="k">def</span> <span class="nf">describe</span><span class="p">(</span><span class="n">D</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Give some high level properties on transactions</span>
+
+<span class="sd">    ========================    ===============</span>
+<span class="sd">    Number of items             int</span>
+<span class="sd">    Number of transactions      int</span>
+<span class="sd">    Average transaction size    float</span>
+<span class="sd">    Density                     float in [0, 1]</span>
+<span class="sd">    ========================    ===============</span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    D: pd.Series</span>
 <span class="sd">        A transactional dataset</span>
 
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">        .. math:: density = { avg\_transaction\_size \over n\_items }</span>
+
 <span class="sd">    Example</span>
 <span class="sd">    -------</span>
 <span class="sd">    &gt;&gt;&gt; from skmine.datasets.fimi import fetch_connect</span>
-<span class="sd">    &gt;&gt;&gt; from skmine.datasets.utils import describe_itemsets</span>
-<span class="sd">    &gt;&gt;&gt; describe_itemsets(fetch_connect())</span>
-<span class="sd">    {&#39;nb_items&#39;: 75, &#39;avg_transaction_size&#39;: 37.0, &#39;nb_transactions&#39;: 3196}</span>
+<span class="sd">    &gt;&gt;&gt; from skmine.datasets.utils import describe</span>
+<span class="sd">    &gt;&gt;&gt; describe(fetch_connect())  # doctest: +SKIP</span>
+<span class="sd">    {&#39;n_items&#39;: 75, &#39;avg_transaction_size&#39;: 37.0, &#39;n_transactions&#39;: 3196, &#39;density&#39;: 0.4933}</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">avg_transaction_size</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">n_transactions</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">n_items</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">D</span><span class="p">)))</span>
     <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
-        <span class="n">nb_items</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">D</span><span class="p">))),</span>
-        <span class="n">avg_transaction_size</span><span class="o">=</span><span class="n">D</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
-        <span class="n">nb_transactions</span><span class="o">=</span><span class="n">D</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">n_items</span><span class="o">=</span><span class="n">n_items</span><span class="p">,</span>
+        <span class="n">avg_transaction_size</span><span class="o">=</span><span class="n">avg_transaction_size</span><span class="p">,</span>
+        <span class="n">n_transactions</span><span class="o">=</span><span class="n">n_transactions</span><span class="p">,</span>
+        <span class="n">density</span><span class="o">=</span><span class="n">avg_transaction_size</span> <span class="o">/</span> <span class="n">n_items</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="describe_logs"><a class="viewcode-back" href="../../../reference/datasets.html#skmine.datasets.utils.describe_logs">[docs]</a><span class="k">def</span> <span class="nf">describe_logs</span><span class="p">(</span><span class="n">D</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Give some high level properties on logs</span>
+
+<span class="sd">    ==============================      =====</span>
+<span class="sd">    Number of events                    int</span>
+<span class="sd">    Average delta per event             float</span>
+<span class="sd">    Average nb of points per event      float</span>
+<span class="sd">    ==============================      =====</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    D: pd.Series</span>
+<span class="sd">        A dataset containing logs</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; from skmine.datasets.periodic import fetch_health_app</span>
+<span class="sd">    &gt;&gt;&gt; from skmine.datasets.utils import describe_logs</span>
+<span class="sd">    &gt;&gt;&gt; describe(fetch_health_app()) # doctest: +SKIP</span>
+<span class="sd">    {&#39;n_events&#39;: 20,</span>
+<span class="sd">    &#39;avg_delta_per_event&#39;: Timedelta(&#39;0 days 00:53:24.984000&#39;),</span>
+<span class="sd">    &#39;avg_nb_points_per_event&#39;: 100.0}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">gb</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">gb</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)))</span>
+    <span class="n">avg_nb_points</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">n_events</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">gb</span><span class="p">),</span>
+        <span class="n">avg_delta_per_event</span><span class="o">=</span><span class="n">a</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+        <span class="n">avg_nb_points_per_event</span><span class="o">=</span><span class="n">avg_nb_points</span><span class="p">,</span>
     <span class="p">)</span></div>
 </pre></div>
 
@@ -192,11 +271,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Rémi Adon
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -207,7 +294,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
